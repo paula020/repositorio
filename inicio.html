@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cifrado Asimétrico</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        h2 {
+            border-bottom: 2px solid #e1e1e1;
+            padding-bottom: 10px;
+        }
+        p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        iframe {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 1em;
+            text-align: left;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: 600;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background: #e3f2fd;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .desventajas li {
+            background: #ffe0b2;
+        }
+        .ventajas, .desventajas {
+            margin-top: 20px;
+        }
+        textarea {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cifrado Asimétrico</h1>
+        <p>La criptografía asimétrica opera mediante la implementación de dos claves matemáticamente vinculadas. Este sistema requiere que un mensaje codificado con una de las claves solo pueda ser decodificado utilizando su contraparte complementaria, estableciendo así un mecanismo bidireccional de seguridad.</p>
+        <p>En este modelo criptográfico, cada usuario dispone de dos elementos fundamentales: una clave reservada que permanece bajo custodia exclusiva del propietario (clave privada), y otra de conocimiento público que puede ser compartida abiertamente (clave pública).</p>
+        <img src="encriptacion-asimetrica.jpg" alt="Imagen de Cifrado Asimétrico" style="width:100%; height:auto; margin: 20px 0;">
+        <h2>¿Qué es el criptosistema de clave pública?</h2>
+        <p>En 1976 Diffie y Hellman publicaron el artículo “New directions in cryptography”. En él proponían un nuevo tipo de criptografía basado en utilizar claves distintas para encriptar y desencriptar, una de ellas se hace pública y la otra es privada de cada usuario. Así todos los usuarios de la red tienen acceso a las claves públicas, pero únicamente a su clave privada. Estas ideas supusieron la revolución de la criptología, se podía utilizar para confidencialidad (como los sistemas simétricos), autenticación y firma digital, además de solucionar el problema de la distribución de claves simétricas.</p>
+        <p><b><i>Un criptosistema de clave pública es un método de cifrado que utiliza un par de claves matemáticamente relacionadas</i></b></p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/7LEM_WPN-bY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <p>Cómo funciona y cuáles son sus algoritmos representativos</p>
+        <p>Funciona utilizando un par de claves matemáticamente relacionadas:</p>
+        <ul>
+            <li><b>Generación de claves:</b> Se genera un par de claves (pública y privada) mediante algoritmos criptográficos.</li>
+            <li><b>Cifrado:</b> Un remitente cifra un mensaje con la clave pública del destinatario.</li>
+            <li><b>Descifrado:</b> Solo el destinatario con la clave privada correspondiente puede descifrar el mensaje.</li>
+        </ul>
+        <p>Firmas digitales:</p>
+        <ul>
+            <li>El remitente firma un mensaje con su clave privada.</li>
+            <li>Cualquiera con la clave pública puede verificar que la firma es auténtica y que el mensaje no ha sido alterado.</li>
+        </ul>
+        <h2>Principales algoritmos de clave pública</h2>
+        <table>
+            <tr><th>Algoritmo</th><th>Descripción</th><th>Uso Principal</th></tr>
+            <tr><td>RSA</td><td>Basado en la factorización de números primos grandes.</td><td>Cifrado, firmas digitales, SSL/TLS.</td></tr>
+            <tr><td>ECC</td><td>Utiliza criptografía de curvas elípticas para mayor seguridad con claves más cortas.</td><td>Bitcoin, SSH, certificados digitales.</td></tr>
+            <tr><td>Diffie-Hellman (DH)</td><td>Protocolo para el intercambio seguro de claves.</td><td>VPNs, TLS, comunicaciones seguras.</td></tr>
+            <tr><td>DSA</td><td>Algoritmo para la generación de firmas digitales.</td><td>Autenticación, integridad de mensajes.</td></tr>
+        </table>
+        <p>El acceso a las claves públicas es fácil, lo que posibilita que un usuario conozca la clave de miles de usuarios, por lo que podría suplantarlo con relativa facilidad. La solución es firmar el mensaje, validando la pertenencia del par de claves mediante una autoridad de certificación que emita el certificado correspondiente.</p>
+        <h2>Ventajas y Desventajas del Criptosistema de Clave Pública</h2>
+        <div class="ventajas">
+            <h3>✅ Ventajas:</h3>
+            <ul>
+                <li>No requiere un canal seguro para el intercambio de claves.</li>
+                <li>Escalabilidad en redes grandes.</li>
+                <li>Uso prolongado de la misma clave sin necesidad de cambios frecuentes.</li>
+            </ul>
+        </div>
+        <div class="desventajas">
+            <h3>⚠️ Desventajas:</h3>
+            <ul>
+                <li>Procesamiento más lento debido a operaciones matemáticas complejas.</li>
+                <li>Ineficiente con grandes volúmenes de datos.</li>
+                <li>Requiere claves largas para mantener seguridad.</li>
+            </ul>
+        </div>
+        <h2>Cifrado y Descifrado con RSA</h2>
+        <p>Ejemplo de cifrado y descifrado.</p>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jsencrypt/3.0.0/jsencrypt.min.js"></script>
+        <textarea id="mensaje" placeholder="Introduce el mensaje"></textarea>
+        <button onclick="cifrar()">Cifrar</button>
+        <button onclick="descifrar()">Descifrar</button>
+        <p>Texto Cifrado:</p>
+        <textarea id="cifrado" readonly></textarea>
+        <p>Texto Descifrado:</p>
+        <textarea id="descifrado" readonly></textarea>
+        <script>
+            const crypt = new JSEncrypt({default_key_size: 1024});
+            crypt.getKey();
+            const publicKey = crypt.getPublicKey();
+            const privateKey = crypt.getPrivateKey();
+            function cifrar() {
+                const mensaje = document.getElementById("mensaje").value;
+                crypt.setPublicKey(publicKey);
+                const textoCifrado = crypt.encrypt(mensaje);
+                document.getElementById("cifrado").value = textoCifrado;
+            }
+            function descifrar() {
+                const textoCifrado = document.getElementById("cifrado").value;
+                crypt.setPrivateKey(privateKey);
+                const textoDescifrado = crypt.decrypt(textoCifrado);
+                document.getElementById("descifrado").value = textoDescifrado;
+            }
+        </script>
+        <h2>Casos de uso de criptografía</h2>
+        <h3>Comunicaciones seguras</h3>
+        <p>Uno de los casos de uso más comunes de la criptografía es proporcionar una comunicación segura a través de Internet. Transport Layer Security (TLS) y su predecesor, Secure Sockets Layer (SSL), utilizan protocolos criptográficos para establecer conexiones protegidas entre navegadores web y servidores. Este canal seguro garantiza que los datos compartidos entre el navegador de un usuario y un sitio web permanezcan privados y no puedan ser interceptados por actores maliciosos.</p>
+        <h3>Cifrado de datos</h3>
+        <p>El cifrado de datos es una forma de criptografía ampliamente empleada que protege la información confidencial almacenada en varios dispositivos, como discos duros, teléfonos inteligentes y servicios de espacio en la nube. Los algoritmos de cifrado estables como AES transforman eficazmente el texto sin formato en texto cifrado, lo que garantiza que, incluso si una parte no autorizada obtiene acceso, no podrá descifrar datos confidenciales sin acceso a la clave de cifrado de los usuarios autorizados.</p>
+        <h3>Autenticación</h3>
+        <p>Verificar la autenticidad de la información enviada y recibida es una función crítica de la criptografía que se usa para realizar todo tipo de negocios, posible gracias al uso de firmas digitales. A través de la criptografía asimétrica, los documentos pueden modificar con firmas digitales, que solo pueden generar con el uso de una clave privada. Los destinatarios de documentos firmados digitalmente pueden usar la clave pública del remitente para verificar la autenticidad de la firma y confirmar que el documento no fue manipulado durante la transmisión.</p>
+        <h2>Conclusiones sobre Criptosistemas de Clave Pública</h2>
+        <ol>
+            <li><strong>Confidencialidad y Seguridad</strong><p>Los criptosistemas de clave pública (PKC) permiten que la información sea transmitida de forma segura sin necesidad de compartir claves secretas de antemano. El uso de claves públicas y privadas asegura que solo el destinatario pueda descifrar los mensajes, protegiendo la confidencialidad de los datos.</p></li>
+            <li><strong>Autenticidad y No Repudio</strong><p>PKC también ofrece mecanismos de autenticación, como las firmas digitales, que permiten verificar la identidad del remitente y garantizar que el mensaje no haya sido alterado. Esto previene fraudes y proporciona no repudio, asegurando que el remitente no pueda negar el envío del mensaje.</p></li>
+            <li><strong>Escalabilidad y Facilidad de Gestión</strong><p>Una de las principales ventajas de los PKC es que no requieren el intercambio previo de claves secretas, lo que facilita la gestión y escalabilidad en sistemas de gran tamaño. Esto es especialmente útil en entornos de comunicaciones abiertas como Internet.</p></li>
+            <li><strong>Vulnerabilidades y Riesgos</strong><p>A pesar de su seguridad, los sistemas PKC no son inmunes a riesgos. La seguridad depende de la longitud de las claves y la capacidad de los atacantes para romper los algoritmos criptográficos. Además, la gestión inadecuada de las claves privadas puede comprometer la seguridad.</p></li>
+            <li><strong>Aplicaciones en el Mundo Real</strong><p>Los criptosistemas de clave pública son fundamentales en diversas aplicaciones de ciberseguridad, como el correo electrónico seguro (PGP, S/MIME), el protocolo SSL/TLS para conexiones HTTPS, y las criptomonedas como Bitcoin, que utilizan RSA y otros algoritmos para garantizar la seguridad en las transacciones.</p></li>
+        </ol>
+        <h3>Observaciones</h3>
+        <p>Los criptosistemas de clave pública (PKC) ofrecen ventajas significativas en términos de seguridad y gestión de claves, pero también presentan desafíos en su implementación. La eficiencia y la robustez de los sistemas PKC dependen en gran medida de la longitud de las claves utilizadas y de las medidas de seguridad en torno a la clave privada. Además, los sistemas PKC pueden ser más lentos que los criptosistemas simétricos, lo que puede ser un factor limitante en aplicaciones que requieren alta velocidad de procesamiento.</p>
+        <h3>Recomendaciones</h3>
+        <ul>
+            <li><strong>Gestión adecuada de claves:</strong> Las claves privadas deben ser almacenadas de forma segura y nunca compartidas. Es fundamental el uso de hardware de seguridad (HSM) para proteger las claves privadas.</li>
+            <li><strong>Uso de claves de longitud adecuada:</strong> Para garantizar la seguridad, se deben utilizar claves de longitud adecuada (por ejemplo, 2048 bits o más para RSA) y realizar actualizaciones periódicas.</li>
+            <li><strong>Adopción de buenas prácticas criptográficas:</strong> Asegúrese de implementar algoritmos criptográficos fuertes y de utilizar protocolos seguros como TLS/SSL para la transmisión de datos sensibles.</li>
+            <li><strong>Educación y formación:</strong> Capacitar a los usuarios y administradores sobre la importancia de la gestión de claves y la seguridad general es esencial para mitigar el riesgo de errores humanos.</li>
+            <li><strong>Monitoreo continuo:</strong> Se debe llevar a cabo un monitoreo continuo de los sistemas para detectar cualquier intento de ataque o vulnerabilidad en el sistema de claves públicas.</li>
+        </ul>
+
+
+        <h3>Información Académica</h3>
+        <p><strong>Estudiante:</strong> Paula Carolina Barrera Camargo</p>
+        <p><strong>Curso:</strong> Seguridad en el Desarrollo de Software</p>
+        <p><strong>Docente:</strong> Nestor Eduardo Figueroa Cardona</p>
+        <p><strong>Fecha de entrega:</strong> 31/03/2025 - Semana 3</p>
+    </div>
+</body>
+</html>
